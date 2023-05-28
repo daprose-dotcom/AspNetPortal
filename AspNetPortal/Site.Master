@@ -1,0 +1,180 @@
+﻿<%@ Master Language="VB" AutoEventWireup="true" CodeBehind="Site.master.vb" Inherits="AspNetPortal.SiteMaster" %>
+
+<%@ Import Namespace="AspNetPortal" %>
+<%@ Import Namespace="Microsoft.AspNet.Identity" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - AspNetPortal.XYZ</title>
+    <meta name="description" content="ASP.NET (VB) website portal with a CMS and a bulletin board system (BBS) to support for HTML blogs forums bulletins news and photo albums." />
+    <meta name="keywords" content="asp.net,vb.net,portal,startup,web portal,cms,bbs">
+    <meta name="author" content="daprose.com">
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/b3330f08f5.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tiny.cloud/1/xgqp823wqtw1desfqqopca9cud4knzhfvve8alwyv8eso790/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager
+                    see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <label id="Top" name="Top" />
+        <div class="container body-content">
+
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+                <div class="col-md-3">
+                    &nbsp;&nbsp;<a class="navbar-brand" runat="server" href="~/" visible="true"><font color="yellow" size="5"><strong><i class="fa fa-list-alt" aria-hidden="true"></i></strong></font></a><a class="navbar-brand" runat="server" href="~/" visible="true"><img src="/Images/Logo.png" style="width:200px;height:35px;" /></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation"><span Class="navbar-toggler-icon"></span></button>
+                </div>
+
+                <div class="col-md-3 align-rigth text-nowrap">
+
+                    <div class="collapse navbar-collapse align-rigth" id="navbarToggler">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" runat="server" href="~/"><font color="yellow" size="3"><strong> Home</strong></font><span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" runat="server" href="~/About"><font color="yellow" size="3"><strong> About</strong></font><span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" runat="server" href="~/Contact"><font color="yellow" size="3"><strong> Contact</strong></font><span class="sr-only">(current)</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-md-3 align-rigth text-nowrap" align="right" nowrap="true">
+                <input style="width:200px;" maxlength="40"  class="form-control mr-sm-6" runat="server" type="search" placeholder="Search" aria-label="Search">
+                <%' &nbsp;<button class="redbtn btn-outline-success my-2 my-sm-0" runat="server" type="submit">Search</button> %>
+                </div>
+
+                <div class="col-md-3 align-rigth" align="right">
+                    <% If InStr(Trim(Request.ServerVariables("SCRIPT_NAME")), "ViewAd") = 0 Then  %>
+                        <asp:LoginView runat="server" ViewStateMode="Disabled">
+                            <AnonymousTemplate>
+                                &nbsp;<a runat="server" href="~/Account/Register" title="Create a new account"><asp:button class="redbtn">Register</asp:button></a>
+                                <a runat="server" href="~/Account/Login" title="Log into your account"><asp:button class="redbtn">Login</asp:button></a>&nbsp;
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+                                &nbsp;<a runat="server" href="~/Account/Manage" title="Manage your account"><font color="yellow" size="4"><i class="fa fa-cog" aria-hidden="true"></i></b></font></a>
+                                &nbsp;<asp:LoginStatus class="redbtn" runat="server" LogoutAction="Redirect" LogoutText="Logoff" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />&nbsp;
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+                    <% Else %>
+                            <a runat="server" href="#" title="Close This Window" OnClick="window.close();"><font color="yellow" size="4"><i class="fa fa-sign-out" aria-hidden="true"></i></font></a>
+                            <a runat="server" href="#" title="Print This Ad" onclick="window.print();"><font color="yellow" size="4"><i class="fa-solid fa-print"></i></font></a>
+                            <a runat="server" href="~/Report" title="Report This Ad"><font color="yellow" size="4"><i class="fa fa-shield" aria-hidden="true"></i></font></a>
+                            <asp:LoginView runat="server" ViewStateMode="Disabled">
+                                <AnonymousTemplate>
+                                </AnonymousTemplate>
+                                <LoggedInTemplate>
+                                    <a runat="server" href="~/Account/Reply" title="Reply Ad"><font color="yellow" size="4"><i class="fa-solid fa-reply"></i></font></a>
+                                    <a runat="server" href="~/Account/Save" title="Save Ad"><font color="yellow" size="4"><i class="fas fa-save"></i></font></a>
+                                    <asp:LoginStatus class="redbtn" runat="server" LogoutAction="Redirect" LogoutText="Logoff" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                </LoggedInTemplate>
+                            </asp:LoginView>
+                    <% End If %>
+                </div>
+            </nav>
+
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+
+            <br /><br />
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="alert alert-info" role="alert">
+                        <h2 class="alert-heading"><i class="fa fa-bar-chart" aria-hidden="true"></i> Statistics</h2>
+                        <hr />
+                        <p class="mb-0">There are <b><%= StaticCache.forumsHT.Count %></b> forums distributed in <b><%= StaticCache.catsHT.Count %></b> categories.</a></p>
+                        <p class="mb-0">We have <b>7562</b> e-mail verified users.</a></p>
+                        <p class="mb-0">Lets welcome our latest member: <strong>Radio</strong></a></p>
+                        <p class="mb-0">Last visitor on <b><%= Now.Date.ToLongDateString %></b> at <b><%= FormatDateTime(Now, DateFormat.LongTime)  %></b></p>
+                        <%' <hr><p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p> %>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="alert alert-success" role="alert">
+                        <h2 class="alert-heading"><i class="fa-solid fa-arrow-right-to-city"></i> Sponsors</h2>
+                        <hr />
+                        <p class="mb-0"><a target="_blank" href="http://daprose.com"><strong>Data Processing Services (DAPROSE.COM)</strong>.</a></p>
+                        <p class="mb-0"><a target="_blank" href="http://mybbs.org"><strong>Bulletin Board System (MyBBS.ORG)</strong>.</a></p>
+                        <p class="mb-0"><a target="_blank" href="http://ministriesofmercy.org"><strong>Ministries of Mercy (MINISTRIESOFMERCY.ORG)</strong>.</a></p>
+                        <p class="mb-0"><a target="_blank" href="http://mybbs.org/pccpro/"><strong>Personal Call Center PRO (pccPRO)</strong>.</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <footer>
+                <table id="footertable" width="100%" bgcolor="#F5F5F5" cellspacing="0" cellpadding="10">
+                    <tr>
+                        <td align="left" width="50%">
+                            <a runat="server" href="~/"><strong>Home</strong></a> | 
+                            <a runat="server" href="~/About"><strong>About</strong></a> | 
+                            <a runat="server" href="~/Contact"><strong>Contact</strong></a> | 
+                            <a runat="server" href="~/faq"><strong>FAQ</strong></a> | 
+                            <a runat="server" href="~/Privacy"><strong>Privacy Policy</strong></a> | 
+                            <a runat="server" href="~/Terms"><strong>Terms of Service</strong></a>
+                        </td>
+                        <td align="right" width="50%">
+                            <a runat="server" href="~/Subscribe"><strong>Subscribe</strong></a> | <a runat="server" href="~/Unsubscribe"><strong>Unsubscribe</strong></a> | <a runat="server" href="#Top"><strong>Go Up</strong></a><br />
+                        </td>
+                    </tr>
+                </table>
+            </footer>
+            <br />
+            <p align="center">Hosted at <a target="_blank" href="http://mywebhosting.xyz"><b>MyWebHosting.XYZ</b></a> | Powered by DAPROSE's <a target="_blank" href="http://aspnetportal.xyz"><b>AspNetPortal.XYZ</b></a> v.<%= Application("APP_VERSION") %>.<%= Application("APP_VISITORS") %><br />&copy; <%: DateTime.Now.Year %> - AspNetPortal.XYZ</p>
+
+        </div>
+    </form>
+</body>
+</html>

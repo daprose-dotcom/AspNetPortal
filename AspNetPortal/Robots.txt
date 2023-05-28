@@ -1,0 +1,6 @@
+﻿User-agent: *
+Allow: /
+User-agent: PowerMapper
+Allow: /
+
+Sitemap: http://AspNetPortal.xyz/sitemap.xml

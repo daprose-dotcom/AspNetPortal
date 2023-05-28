@@ -1,0 +1,179 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="AdminMaster.vb" Inherits="AspNetPortal.SiteMaster" %>
+<%@ Import Namespace="AspNetPortal" %>
+<%@ Import Namespace="Microsoft.AspNet.Identity" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - AspNetPortal.XYZ</title>
+    <meta name="description" content="ASP.NET (VB) website portal with a CMS and a bulletin board system (BBS) to support for HTML blogs forums bulletins news and photo albums." />
+    <meta name="keywords" content="asp.net,vb.net,portal,startup,web portal,cms,bbs">
+    <meta name="author" content="daprose.com">
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script src="https://kit.fontawesome.com/b3330f08f5.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tiny.cloud/1/xgqp823wqtw1desfqqopca9cud4knzhfvve8alwyv8eso790/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+<div class='dashboard'>
+    <div class="dashboard-nav">
+        <%'<header><a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a><a href="#" class="brand-logo"><i class="fas fa-anchor"></i><span>ADMIN</span></a></header> %>
+        <nav class="dashboard-nav-list">
+            <a runat="server" href="~/Admin/manage.aspx" class="dashboard-nav-item active"><i class="fas fa-tachometer-alt"></i> Dashboard </a>
+            <a href="#" class="dashboard-nav-item"><i class="fas fa-sync"></i> Updates </a>
+            <a href="#" class="dashboard-nav-item"><i class="fas fa-archive"></i> Uploads </a>
+            <div class="nav-item-divider"></div>
+
+            <div class='dashboard-nav-dropdown'>
+                <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-bullhorn"></i> Announcements</a>
+                <div class='dashboard-nav-dropdown-menu'>
+                    <a href="#" class="dashboard-nav-dropdown-item">All</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Add new</a>
+                </div>
+            </div>
+
+            <div class='dashboard-nav-dropdown'>
+                <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-display"></i> Appearance</a>
+                <div class='dashboard-nav-dropdown-menu'>
+                    <a href="#" class="dashboard-nav-dropdown-item">Header</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Menues</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Plugins</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Themes</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Widgets</a>
+                </div>
+            </div>
+
+            <a href="#" class="dashboard-nav-item"><i class="fas fa-comment"></i> Comments </a>
+
+            <div class='dashboard-nav-dropdown'>
+                <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-users"></i> Users </a>
+                <div class='dashboard-nav-dropdown-menu'>
+                    <a href="#" class="dashboard-nav-dropdown-item">All users</a>
+                    <a runat="server" href="~/Admin/Roles/CreateUserWizardWithRoles.aspx" class="dashboard-nav-dropdown-item">Add user</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Banned</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Subscribed</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">UnSubscribed</a>
+                </div>
+            </div>
+
+            <div class='dashboard-nav-dropdown'>
+                <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-cogs"></i> Settings </a>
+                <div class='dashboard-nav-dropdown-menu'>
+                    <a href="#" class="dashboard-nav-dropdown-item">General</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Reading</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Writting</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Discussion</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Media</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Media</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Permalinks</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Statistics</a>
+                    <a runat="server" href="~/Admin/ManageRoles.aspx" class="dashboard-nav-dropdown-item">Roles</a>
+                    <a runat="server" href="~/Admin/UsersAndRoles.aspx" class="dashboard-nav-dropdown-item">UsersRoles</a>
+                </div>
+            </div>
+
+            <div class='dashboard-nav-dropdown'>
+                <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle"><i class="fas fa-cogs"></i> Tools </a>
+                <div class='dashboard-nav-dropdown-menu'>
+                    <a href="#" class="dashboard-nav-dropdown-item">All tools</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Add tool</a>
+                    <a runat="server" href="~/Admin/ImportWPXML.aspx" class="dashboard-nav-dropdown-item">Import WP-XML</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Export</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Backup database</a>
+                    <a href="#" class="dashboard-nav-dropdown-item">Restore database</a>
+                </div>
+            </div>
+
+            <div class="nav-item-divider"></div>
+                <asp:LoginView runat="server" ViewStateMode="Disabled">
+                    <AnonymousTemplate>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        <asp:LoginStatus class="dashboard-nav-item" runat="server" LogoutAction="Redirect" LogoutText="<i class='fas fa-sign-out-alt'></i> Logout " LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                    </LoggedInTemplate>
+                </asp:LoginView>
+        </nav>
+    </div>
+
+    <div class='dashboard-app'>
+        <header class='dashboard-toolbar'>
+            <a href="#!" class="menu-toggle"><i class="fas fa-bars"></i></a>
+            <a runat="server" href="~/Account/Manage" class="dashboard-nav-item"><i class="fas fa-arrow-left"></i></a>
+            <a runat="server" href="~/" class="dashboard-nav-item"><i class="fas fa-home"></i></a>
+            <h3><b>Welcome System Administrator!</b></h3>
+        </header>
+        <div class='dashboard-content'>
+            <div class='container'>
+                <asp:ContentPlaceHolder ID="MainAdminContent" runat="server"></asp:ContentPlaceHolder>
+                <br />
+                <div class='card'>
+                    <div class='card-header'>
+                        <h1></h1>
+                    </div>
+                    <div class='card-body'>
+                        <div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    const mobileScreen = window.matchMedia("(max-width: 990px )");
+    $(document).ready(function () {
+        $(".dashboard-nav-dropdown-toggle").click(function () {
+            $(this).closest(".dashboard-nav-dropdown")
+                .toggleClass("show")
+                .find(".dashboard-nav-dropdown")
+                .removeClass("show");
+            $(this).parent()
+                .siblings()
+                .removeClass("show");
+        });
+        $(".menu-toggle").click(function () {
+            if (mobileScreen.matches) {
+                $(".dashboard-nav").toggleClass("mobile-show");
+            } else {
+                $(".dashboard").toggleClass("dashboard-compact");
+            }
+        });
+    });
+
+</script>
+    </form>
+</body>
+</html>

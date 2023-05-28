@@ -1,0 +1,43 @@
+﻿<%@ Page Title="Manage Logins" Language="vb" MasterPageFile="~/Account/Account.Master" AutoEventWireup="false" CodeBehind="ManageLogins.aspx.vb" Inherits="AspNetPortal.ManageLogins" %>
+<%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
+
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainMemberContent" runat="server">
+    <h2>Manage your external logins</h2>
+    <hr />
+    <asp:PlaceHolder runat="server" ID="SuccessMessagePlaceholder" Visible="false" ViewStateMode="Disabled">
+            <p class="text-success"><%: SuccessMessage %></p>
+        </asp:PlaceHolder>
+    <div>
+        <section id="externalLoginsForm">
+
+            <asp:ListView runat="server"
+                ItemType="Microsoft.AspNet.Identity.UserLoginInfo"
+                SelectMethod="GetLogins" DeleteMethod="RemoveLogin" DataKeyNames="LoginProvider,ProviderKey">
+
+                <LayoutTemplate>
+                    <h4>Registered Logins</h4>
+                    <table class="table">
+                        <tbody>
+                            <tr runat="server" id="itemPlaceholder"></tr>
+                        </tbody>
+                    </table>
+
+                </LayoutTemplate>
+                <ItemTemplate>
+                    <tr>
+                        <td><%#: Item.LoginProvider %></td>
+                        <td>
+                            <asp:Button runat="server" Text="Remove" CommandName="Delete" CausesValidation="false"
+                                ToolTip='<%# "Remove this " + Item.LoginProvider + " login from your account" %>'
+                                Visible="<%# CanRemoveExternalLogins %>" CssClass="redbtn btn-default" />
+                        </td>
+                    </tr>
+                </ItemTemplate>
+            </asp:ListView>
+
+        </section>
+    </div>
+    <div>
+        <uc:OpenAuthProviders runat="server" ReturnUrl="~/Account/ManageLogins" />
+    </div>
+</asp:Content>
